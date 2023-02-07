@@ -2,12 +2,15 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Test') {
             steps {
                 echo "mvn clean test"
             }
-
-
+        }
+        stage('Test') {
+                    steps {
+                        echo "mvn clean package"
+                    }
         }
     }
 }
