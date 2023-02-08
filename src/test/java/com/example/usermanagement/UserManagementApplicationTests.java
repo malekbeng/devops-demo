@@ -14,7 +14,7 @@ class UserManagementApplicationTests {
   @Autowired
   UserRepository userRepository ;
   @Test
-  public void addUserTest (){
+  void addUserTest (){
     User user = new User();
     user.setAge(26);
     user.setPrenom("test");
@@ -24,8 +24,5 @@ class UserManagementApplicationTests {
     assertNotNull(user.getUserId());
   }
 
-  @Test
-  void contextLoads() {
-  }
 
 }

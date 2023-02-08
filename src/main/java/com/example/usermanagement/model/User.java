@@ -1,6 +1,6 @@
 package com.example.usermanagement.model;
 
-import lombok.Data;
+import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.Column;
@@ -9,7 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-@Data
+@Getter
+@Setter
 public class User {
 
     @GeneratedValue(

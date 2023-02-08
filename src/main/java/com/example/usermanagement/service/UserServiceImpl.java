@@ -18,12 +18,16 @@ public class UserServiceImpl implements  UserService{
 
   @Override
   public User updateUser(User user, String id) {
-    User userToUpdate = userRepository.findById(id).orElse(null);
+
+  if (userRepository.findById(id).isPresent() == true){
+    User userToUpdate = userRepository.findById(id).get();
     userToUpdate.setAge(user.getAge());
     userToUpdate.setNom(user.getNom());
     userToUpdate.setPrenom(user.getPrenom());
     userToUpdate.setProfession(user.getProfession());
     return userRepository.save(userToUpdate);
+  }
+    return null;
   }
 
   @Override

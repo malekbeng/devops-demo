@@ -1,5 +1,6 @@
 package com.example.usermanagement;
 
+import com.example.usermanagement.dto.UserDto;
 import com.example.usermanagement.model.User;
 import com.example.usermanagement.service.UserServiceImpl;
 import lombok.RequiredArgsConstructor;
@@ -13,26 +14,28 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/api/users")
 public class RestAPI {
-    private final UserServiceImpl userService;
+    private UserServiceImpl userService;
 
     @PostMapping
-    private ResponseEntity<User> addUser(@RequestBody User user) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(userService.addUser(user));
+    public ResponseEntity<User> addUser(@RequestBody UserDto user) {
+        User u = user.userDtoToUser() ;
+        return ResponseEntity.status(HttpStatus.CREATED).body(userService.addUser(u));
     }
 
     @GetMapping
-    private ResponseEntity<List<User>> getUser() {
+    public ResponseEntity<List<User>> getUser() {
         return ResponseEntity.status(HttpStatus.OK).body(userService.retrieveUsers());
     }
 
     @PutMapping("/{id}")
-    private ResponseEntity<User> updateUser(@RequestBody User user, @PathVariable String id) {
-        return ResponseEntity.status(HttpStatus.OK).body(userService.updateUser(user, id));
+    public ResponseEntity<User> updateUser(@RequestBody UserDto user, @PathVariable String id) {
+        User u = user.userDtoToUser() ;
+        return ResponseEntity.status(HttpStatus.OK).body(userService.updateUser(u, id));
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    private void  deleteUser( @PathVariable String id) {
+    public void  deleteUser( @PathVariable String id) {
         userService.deleteUser(id);
 
     }
