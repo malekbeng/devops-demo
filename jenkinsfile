@@ -9,7 +9,7 @@ pipeline {
         }
         stage('Test Qualite ') {
                             steps {
-                                echo "mvn clean verify sonar:sonar -Dsonar.projectKey=devopsTest -Dsonar.host.url=http://localhost:9000 -Dsonar.login=sqp_ad5ab964545e81fb8dc19f7477f263cdff652f3e"
+                                echo "mvn clean verify sonar:sonar -Dsonar.projectKey=dev -Dsonar.host.url=http://localhost:9000 -Dsonar.login=sqp_e72aac4f0643c8df7512ab0fbc6cdf41da7b1983"
                             }
         }
         stage('Package') {
